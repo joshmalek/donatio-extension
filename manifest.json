@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "DonatIO Extension",
+  "version": "0.1",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/gp/buy/spc/handlers/display.html*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
