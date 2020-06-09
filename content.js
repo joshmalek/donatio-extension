@@ -1,5 +1,5 @@
 //https://www.amazon.com/gp/buy/spc/handlers
-alert("This is an amazon checkout!")
+// alert("This is an amazon checkout!")
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -7,7 +7,6 @@ chrome.runtime.onMessage.addListener(
       var firstHref = $("a[href^='http']").eq(0).attr("href");
 
       console.log(firstHref);
-      alert(firstHref);
     }
   }
 );
