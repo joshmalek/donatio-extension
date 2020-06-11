@@ -43,6 +43,7 @@ window.addEventListener('load', function() {
 
   // (3) insert the small donation widget at the top of the righthand checkout modal
   const watch = document.getElementById('subtotals')
+  if (watch == null) document.getElementById('right-grid')
   const target = watch.querySelector('div.a-box-inner')
   if (target) {
     app(null, target)
