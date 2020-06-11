@@ -13,6 +13,30 @@ window.addEventListener('load', function() {
   document.getElementsByTagName('body')[0].append(donatio_root_container)
   ReactDOM.render(<GlobalRoot />, donatio_root_container)
 
+  // (2) Find subtotal and store in global root
+  let cart_subtotal_table = document.getElementById('subtotals-marketplace-table')
+  let subtotal_dom = cart_subtotal_table.querySelector('td.grand-total-price')
+  if (subtotal_dom) {
+    window.donatio_global.parseSubtotal (subtotal_dom.innerText)
+  }
+  else {
+    // wait for the subtotal to load
+    const subtotalObserver = new MutationObserver((mutationList, observer) => {
+
+      for (const mutation of mutationList) {
+        if (mutation.type === 'childList') {
+          const subtotal_dom = cart_subtotal_table.querySelector('td.grand-total-price')
+          if (subtotal_dom) window.donatio_global.parseSubtotal (subtotal_dom.innerText)
+        }
+      }
+    })
+    subtotalObserver.observe(cart_subtotal_table, {
+      childList: true
+    })
+  }
+
+  //  (3) 
+
   const watch = document.getElementById('subtotals')
   const target = watch.querySelector('div.a-box-inner')
   if (target) {

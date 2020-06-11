@@ -1,3 +1,99 @@
 .donatio-selector {
   border: 5px solid black;
 }
+
+.donatio-selector {
+  border: 1px solid #C8C8C8;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.16);
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.donatio-selector.active {
+  border: 1px solid #49C58B;
+}
+
+.donatio-selector .donatio-title {
+  text-align: center;
+  font-size: 14px;
+  color: #C739CC;
+  font-weight: bold;
+}
+
+.donatio-selector .donatio-donation-prompt {
+  text-align: center;
+  font-size: 12px;
+  color: #434343;
+}
+
+.donatio-selector .price-to-donate {
+  color: #49C58B;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+.donatio-selector .slider-left-label,
+.donatio-selector .slider-right-label,
+.donatio-selector .slider-widget {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.donatio-selector .slider-left-label,
+.donatio-selector .slider-right-label {
+  width: 10%;
+}
+
+.donatio-selector .slider-left-label {
+  text-align: left;
+}
+
+.donatio-selector .slider-right-label {
+  text-align: right;
+}
+
+.donatio-selector .slider-widget {
+  width: 75%;
+  text-align: center;
+}
+
+.donatio-selector .slider-widget input {
+  width: 80%;
+}
+
+.slider-area {
+  width: 95%;
+  margin: 0 auto;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+ background: #7A7A7A;
+ height: 2px;
+}
+
+input[type="range"]::-moz-range-track {
+ background: #7A7A7A;
+ height: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ height: 15px;
+ width: 15px;
+ background: #7A7A7A;
+ margin-top: -5px;
+ border-radius: 50%;
+}
+
+input[type="range"]::-moz-range-thumb {
+ height: 15px;
+ width: 15px;
+ background: #7A7A7A;
+ margin-top: -5px;
+ border-radius: 50%;
+}
