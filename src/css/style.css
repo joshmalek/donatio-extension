@@ -97,3 +97,20 @@ input[type="range"]::-moz-range-thumb {
  margin-top: -5px;
  border-radius: 50%;
 }
+
+.right-cell {
+  text-align: right;
+}
+
+.left-mimic-cell {
+  display: inline-block;
+  width: 60%;
+}
+.right-mimic-cell {
+  display: inline-block;
+  width: 38%;
+  text-align: right;
+}
+.active-donation-text {
+  color: #49C58B !important;
+}

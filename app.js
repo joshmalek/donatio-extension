@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 import GlobalRoot from './components/GlobalRoot'
 import SmallDonationWidget from './components/SmallDonationWidget'
+import AmazonOrderTotalInhibitor from './components/AmazonOrderTotalInhibitor'
 
 import './src/css/style.css'
 
@@ -18,6 +19,8 @@ window.addEventListener('load', function() {
   let subtotal_dom = cart_subtotal_table.querySelector('td.grand-total-price')
   if (subtotal_dom) {
     window.donatio_global.parseSubtotal (subtotal_dom.innerText)
+
+    subtotalInhibition(cart_subtotal_table.lastChild)
   }
   else {
     // wait for the subtotal to load
@@ -26,7 +29,10 @@ window.addEventListener('load', function() {
       for (const mutation of mutationList) {
         if (mutation.type === 'childList') {
           const subtotal_dom = cart_subtotal_table.querySelector('td.grand-total-price')
-          if (subtotal_dom) window.donatio_global.parseSubtotal (subtotal_dom.innerText)
+          if (subtotal_dom) {
+            window.donatio_global.parseSubtotal (subtotal_dom.innerText)
+            subtotalInhibition(cart_subtotal_table.lastChild)
+          }
         }
       }
     })
@@ -35,8 +41,7 @@ window.addEventListener('load', function() {
     })
   }
 
-  //  (3) 
-
+  // (3) insert the small donation widget at the top of the righthand checkout modal
   const watch = document.getElementById('subtotals')
   const target = watch.querySelector('div.a-box-inner')
   if (target) {
@@ -73,5 +78,28 @@ const app = (observer, target) => {
 
     parent.prepend(root)
     ReactDOM.render(<SmallDonationWidget />, document.getElementById('donatio-donation-widget'))
+  }
+}
+
+const subtotalInhibition = (table_row) => {
+
+  let previous = table_row.querySelector('tr.order-summary-grand-total')
+  let order_total_row = previous.nextSibling.nextSibling
+
+  // disable order_total_row, then create AmazonOrderTotalInhibitor and pass
+  // order_total_row to it
+  if (order_total_row) {
+
+    const parent = order_total_row.parentNode.parentNode
+    const inhibitonRoot = document.createElement('div')
+    inhibitonRoot.setAttribute('id', 'donatio-subtotal-rows')
+
+    parent.parentNode.insertBefore(inhibitonRoot, parent)
+    parent.parentNode.insertBefore(parent, inhibitonRoot)
+
+    let cached_subtotal = order_total_row.lastChild.previousSibling.innerText
+    order_total_row.remove ()
+    ReactDOM.render(<AmazonOrderTotalInhibitor defaultSubtotal={cached_subtotal} />, document.getElementById('donatio-subtotal-rows'))
+
   }
 }
