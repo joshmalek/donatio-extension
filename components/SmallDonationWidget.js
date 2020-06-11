@@ -15,6 +15,6 @@ export default class SmallDonationWidget extends React.Component {
       fontSize: '20px'
     }
 
-    return (<div style={sampleStyle}>This should be a small donation widget :)</div>)
+    return (<div class="donatio-selector">This should be a small donation widget :)</div>)
   }
 }

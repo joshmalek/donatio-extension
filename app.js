@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 import GlobalRoot from './components/GlobalRoot'
 import SmallDonationWidget from './components/SmallDonationWidget'
 
+import './src/css/style.css'
+
 window.addEventListener('load', function() {
 
   // (1) insert the global component that handles the main state

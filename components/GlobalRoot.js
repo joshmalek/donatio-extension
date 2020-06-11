@@ -9,11 +9,10 @@ export default class GlobalRoot extends React.Component {
     window.donatio_global = this
 
     this.state = {
-      name: 'Test'
+      donation_active: false
     }
   }
 
-  getName () { return this.state.name }
 
   render () {
     return (<div></div>)
