@@ -121,7 +121,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .charity-of-day-area {
-  border: 1px solid rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   padding: 5px 15px;
   margin-top: 10px;
