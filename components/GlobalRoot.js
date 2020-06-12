@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import priceParser from 'price-parser'
+import axios from 'axios'
 
 export default class GlobalRoot extends React.Component {
 
@@ -13,8 +14,31 @@ export default class GlobalRoot extends React.Component {
       donation_active: false,
       checkout_price: null,
       donation_ratio: 0,
-      subcomponents: []
+      subcomponents: [],
+      charity_of_day: null
     }
+  }
+
+  componentDidMount () {
+    // load the charity of the day
+    axios.post('http://localhost:4000/graphql', {
+      'query': '{ NPOofDay { name, _id } }'
+    })
+    .then(res => {
+      console.log(`Getting Charity of Day`)
+      this.setState({ charity_of_day: res.data.data.NPOofDay }, () => {
+        this.updateComponents ()
+      })
+    })
+    .catch(err => {
+      console.log(`Error getting cahrity of day`)
+      console.log(err)
+    })
+  }
+
+  getCharityName () {
+    if (this.state.charity_of_day == null) return "<none>"
+    return this.state.charity_of_day.name
   }
 
   updateComponents () {

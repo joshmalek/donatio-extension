@@ -7,6 +7,7 @@ export default class SmallDonationWidget extends React.Component {
     super(props)
 
     this.sliderRef = React.createRef ()
+    window.donatio_global.attachComponent(this)
   }
 
   getContributionValue () {
@@ -29,7 +30,7 @@ export default class SmallDonationWidget extends React.Component {
         this.forceUpdate ()
       })
     }}>
-      <div className="donatio-title">DonatIO</div>
+      <div className="donatio-title"> <img width="20px" src="https://i.imgur.com/e7YTpqd.png" /> DonatIO</div>
       <div className="donatio-donation-prompt">Click me to donate to charity with your checkout.</div>
     </div>
     {window.donatio_global.donationActive () && <div>
@@ -42,6 +43,10 @@ export default class SmallDonationWidget extends React.Component {
       </div>
 
       <div className="price-to-donate">+{ this.getContributionValue() }</div>
+      <div className="charity-of-day-area">
+      <div class="label">Charity of the Day</div>
+        <div class="name">{ window.donatio_global.getCharityName () }</div>
+      </div>
     </div>}
   </div>)
   }
