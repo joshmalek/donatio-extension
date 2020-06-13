@@ -2,10 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: './app.js',
+  entry: {
+    app: './app.js',
+    backgroundApp: './backgroundApp.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.js'
+    filename: '[name].js'
   },
   module: {
     rules: [

@@ -30,6 +30,17 @@ chrome.runtime.onMessage.addListener(
     // Open the popup in a new tab.
     // console.log(window.location.href)
     console.log(`Opening ${process_transaction_page} in new tab.`)
-    // chrome.tabs.create({url: window.location.href});
-    chrome.tabs.create({url: process_transaction_page})
+    chrome.tabs.create({url: process_transaction_page}, (tab) => {
+
+      // send message to the tab that was just opened
+      chrome.tabs.onUpdated.addListener(function(tabId, info) {
+        if (tabId == tab.id && info.status == 'complete') {
+
+          console.log(`Sending the message!`)
+          chrome.tabs.sendMessage(tab.id, request, function(response) {
+            // console.log(response);
+          });
+        }
+      })
+    })
 });
