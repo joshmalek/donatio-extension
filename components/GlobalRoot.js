@@ -31,7 +31,7 @@ export default class GlobalRoot extends React.Component {
       })
     })
     .catch(err => {
-      console.log(`Error getting cahrity of day`)
+      console.log(`Error getting charity of day`)
       console.log(err)
     })
   }
@@ -39,6 +39,12 @@ export default class GlobalRoot extends React.Component {
   getCharityName () {
     if (this.state.charity_of_day == null) return "<none>"
     return this.state.charity_of_day.name
+  }
+
+  getCharityId () {
+
+    if (this.state.charity_of_day == null) return "<none>"
+    return this.state.charity_of_day._id
   }
 
   updateComponents () {
@@ -71,6 +77,17 @@ export default class GlobalRoot extends React.Component {
   }
 
   getSubtotal () { return this.state.checkout_price }
+
+  getDonationTotal () {
+    let subtotal = this.state.checkout_price
+    if (subtotal == null) return 0
+
+    return {
+      value: this.state.checkout_price.floatValue * this.state.donation_ratio,
+      symbol: this.state.checkout_price.symbol,
+      currencyCode: this.state.checkout_price.currencyCode
+    }
+  }
 
   toggleDonationActive () {
     return new Promise( (resolve, reject) => {

@@ -20,3 +20,16 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.commands.onCommand.addListener(function(command) {
   console.log('Command:', command);
 });
+
+// Processing transaction requests
+let process_transaction_page = `chrome-extension://${window.location.hostname}/background.html`
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+
+    console.log(request)
+    // Open the popup in a new tab.
+    // console.log(window.location.href)
+    console.log(`Opening ${process_transaction_page} in new tab.`)
+    // chrome.tabs.create({url: window.location.href});
+    chrome.tabs.create({url: process_transaction_page})
+});

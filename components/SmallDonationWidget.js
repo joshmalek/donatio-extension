@@ -18,10 +18,14 @@ export default class SmallDonationWidget extends React.Component {
   }
 
   processTransaction () {
-    // trigger message in background script to call the code below to open popup in a
-    // new tab and show the donation progress!
-    //
-    // chrome.tabs.create({url: $(this).attr('href')});
+    if (window.donatio_global.donationActive ()) {
+      let transaction_amount = window.donatio_global.getDonationTotal ();
+      let npo_id = window.donatio_global.getCharityId ();
+      chrome.runtime.sendMessage({transaction_amount, npo_id, type: 'process_donation'}, function (response) {
+        console.log(`Message Response:`)
+        console.log(response)
+      })
+    }
   }
 
   setRatio (e) {
