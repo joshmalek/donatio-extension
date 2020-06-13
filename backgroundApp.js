@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import BackgroundAppContainer from './components/background/BackgroundAppContainer.js'
+import './src/css/style.css'
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {

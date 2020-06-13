@@ -137,3 +137,41 @@ input[type="range"]::-moz-range-thumb {
   font-weight: bold;
   font-size: 10px;
 }
+
+.background-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #332E41;
+}
+
+.background-container .center-container {
+  width: 50%;
+  min-width: 400px;
+  margin: 0 auto;
+}
+
+.donatio-navbar {
+
+}
+
+.donatio-navbar .left,
+.donatio-navbar .right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.donatio-navbar .left .logo-area,
+.donatio-navbar .left .name-area {
+  display: inline-block;
+  vertical-align: top;
+  height: 50px;
+  line-height: 50px;
+}
+
+.donatio-navbar .left .name-area {
+  font-size: 1.2rem;
+  margin-left: 15px;
+}
