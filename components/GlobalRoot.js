@@ -21,6 +21,10 @@ export default class GlobalRoot extends React.Component {
 
   componentDidMount () {
     // load the charity of the day
+    this.getNPOofDay ()
+  }
+
+  getNPOofDay () {
     axios.post('http://localhost:4000/graphql', {
       'query': '{ NPOofDay { name, _id } }'
     })

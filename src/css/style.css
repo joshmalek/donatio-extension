@@ -138,6 +138,11 @@ input[type="range"]::-moz-range-thumb {
   font-size: 10px;
 }
 
+@font-face {
+  font-family: WorkSans;
+  src: url(../fonts/WorkSans-VariableFont_wght.ttf)
+}
+
 .background-container {
   position: fixed;
   top: 0;
@@ -145,6 +150,8 @@ input[type="range"]::-moz-range-thumb {
   left: 0;
   right: 0;
   background-color: #332E41;
+  color: white;
+  font-family: WorkSans;
 }
 
 .background-container .center-container {
@@ -154,7 +161,22 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .donatio-navbar {
+  color: white;
+}
 
+.donatio-navbar .level-area {
+  color: #332E41;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  width: 58px;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .donatio-navbar .left,

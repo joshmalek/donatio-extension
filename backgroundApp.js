@@ -10,15 +10,15 @@ chrome.runtime.onMessage.addListener(
 
     if (request.type == 'process_donation') {
       console.log(`Processing donation.`)
-      loadDonationProcessView ()
+      loadDonationProcessView (request)
     }
     // sendResponse({farewell: "goodbye"});
 });
 
 
-const loadDonationProcessView = () => {
+const loadDonationProcessView = (donation_information) => {
   let app_location = document.getElementById('background-app-container')
   if (!app_location) { console.error(`Object #background-app-container could not be found...`); return; }
 
-  ReactDOM.render(<BackgroundAppContainer />, app_location)
+  ReactDOM.render(<BackgroundAppContainer donation_info={donation_information} />, app_location)
 }
