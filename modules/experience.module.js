@@ -2,7 +2,7 @@
 
 const getLevel = (experience_value) => {
     
-    return experience_value
+    return Math.floor(experience_value).toFixed(0)
 }
 
 export { getLevel }
