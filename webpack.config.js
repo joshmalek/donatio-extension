@@ -2,10 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  entry: './app.js',
+  entry: {
+    app: './app.js',
+    backgroundApp: './backgroundApp.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -21,6 +24,20 @@ const config = {
       },{
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
+      {
+        test: /\.ttf$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }]
       }
     ]
   }

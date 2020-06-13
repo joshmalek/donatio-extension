@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import GlobalRoot from './components/GlobalRoot'
 import SmallDonationWidget from './components/SmallDonationWidget'
 import AmazonOrderTotalInhibitor from './components/AmazonOrderTotalInhibitor'

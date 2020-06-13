@@ -1,2 +1,4 @@
 node_modules/*
 dist/app.js
+dist/backgroundApp.js
+dist/fonts/*
