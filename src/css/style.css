@@ -197,3 +197,125 @@ input[type="range"]::-moz-range-thumb {
   font-size: 1.2rem;
   margin-left: 15px;
 }
+
+.reward-slider-container {
+
+}
+
+.slider-timer-container {
+  background-color: #100f12;
+  height: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.slider-timer-filler {
+  background-color: white;
+  height: 5px;
+  width: 3%;
+  border-radius: 5px;
+}
+
+.rewrd-slider-content-container {
+  width: 100%;
+  height: 470px;
+  position: relative;
+  left: 0;
+}
+
+.experience-bar-container {
+  /* margin-top: 200px; */
+  position: relative;
+  top: 200px;
+}
+
+.experience-bar-container div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.experience-bar-container .level-area {
+  width: 25%;
+}
+
+.experience-bar-container .level-area.level-left { 
+  text-align: right;
+  position: relative;
+  left: 5px;
+  z-index: 2;
+}
+.experience-bar-container .level-area.level-right { 
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  right: 5px;
+}
+
+.experience-bar-container .level-circle {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  color: black;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background-color: white;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.experience-bar-container .experience-bar {
+  height: 10px;
+  background-color: black;
+  width: 50%;
+  position: relative;
+  top: 15px;
+  z-index: 0;
+}
+
+.experience-bar-container .experience-bar .experience-bar-filler {
+  height: 10px;
+  width: 50%;
+  background-color: #927bd1;
+  position: relative;
+  z-index: 1;
+}
+
+.reward-pill {
+  background-color: #4A445A;
+  border-radius: 8px;
+  color: white;
+  width: 250px;
+  height: 60px;
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reward-pill .reward-icon,
+.reward-pill .reward-text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.reward-pill .reward-icon img {
+  position: relative;
+  top: 10px;
+}
+
+.reward-pill .reward-icon { 
+  width: 30%;
+  text-align: center;
+  height: 100%;
+}
+
+.reward-pill .reward-text { 
+  width: 70%;
+  line-height: 60px;
+  font-size: 1rem;
+}
+
+.reward-preview-area {
+  margin-top: 35px;
+}

@@ -1,8 +1,14 @@
 // Calculate the level of a user based on the experience
 
-const getLevel = (experience_value) => {
-    
-    return experience_value
+const evaluateExperience = (experience_value) => {
+    if (experience_value == 0) return 1
+    return Math.log((5 * experience_value) + 1)
+    return experience_value + 1
 }
 
-export { getLevel }
+const getLevel = (experience_value) => {
+    
+    return Math.floor(evaluateExperience( experience_value )).toFixed(0)
+}
+
+export { evaluateExperience, getLevel }
