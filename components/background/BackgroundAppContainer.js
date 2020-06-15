@@ -8,6 +8,7 @@ import Lottie_InProcess from '../../src/lottie-files/18176-card-payment-in-proce
 import Lottie_PaymentSuccess from '../../src/lottie-files/16271-payment-successful.json'
 
 import { RewardSlider } from './RewardSlider'
+import { RewardPreview } from './RewardPreview'
 
 export default class BackgroundAppContainer extends React.Component {
 
@@ -21,7 +22,9 @@ export default class BackgroundAppContainer extends React.Component {
 
     this.state = {
       current_user: null,
-      transaction_state: '<pending>'
+      transaction_state: '<pending>',
+      donation_data: null,
+      updated_level: null
     }
   }
 
@@ -60,6 +63,10 @@ export default class BackgroundAppContainer extends React.Component {
     })
   }
 
+  updateLevel (new_level) {
+    this.setState({ updated_level: new_level })
+  }
+
   clearChildren (dom_element) {
     while (dom_element.hasChildNodes()) {
       dom_element.removeChild(dom_element.lastChild)
@@ -78,10 +85,12 @@ export default class BackgroundAppContainer extends React.Component {
     .then(res => {
       console.log(`Processing transaction ...`)
       console.log(res)
+      console.log(res.data.data.processDonation)
 
       // update transaction state
       this.setState({
-        transaction_state: '<success>'
+        transaction_state: '<success>',
+        donation_data: res.data.data.processDonation
       }, () => {
         console.log(`Transaction successful.`)
         console.log(this.state.transaction_state)
@@ -110,13 +119,25 @@ export default class BackgroundAppContainer extends React.Component {
   render () {
     return (<div className="background-container">
       <div className="center-container">
-        <Navbar user={this.state.current_user} />
+        <Navbar user={this.state.current_user} updatedLevel={this.state.updated_level} />
         
         {this.state.transaction_state == '<pending>' && <div ref={this.lottiePendingContainer} style={{height: '350px'}}></div>}
         {this.state.transaction_state == '<pending>' && <div style={{fontSize: '1.3rem', textAlign: 'center', fontWeight: 'bold'}}>Processing transaction.</div>}
-        {this.state.transaction_state == '<success>' && <RewardSlider experience_value={10} experience_gained={12} medals_unlocked={[{name: 'Placeholder Medal', description: 'placeholder', img_url: 'https://svgur.com/i/M2e.svg'}]} />}
+        {this.state.transaction_state == '<success>' && 
+          <RewardSlider 
+            experience_value={ this.state.donation_data == null ? 0 : this.state.donation_data.previous_experience_value } 
+            experience_gained={ this.state.donation_data == null ? 0 : this.state.donation_data.experience_gained }
+            medals_unlocked={[{name: 'Placeholder Medal', description: 'placeholder', img_url: 'https://svgur.com/i/M2e.svg'}]}
+            updateLevel={(new_lvl) => { console.log(`Reward Slider returned.`); this.updateLevel(new_lvl) }} 
+          />}
+          <RewardPreview
+            experience_gained={ this.state.donation_data == null ? 0 : this.state.donation_data.experience_gained }
+          />
 
       </div>
     </div>)
   }
 }
+
+// experience_value={ this.state.donation_data == null ? 0 : this.state.donation_data.previous_experience_value } 
+// experience_gained={ this.state.donation_data == null ? 0 : this.state.donation_data.experience_gained }

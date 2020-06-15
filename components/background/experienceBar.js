@@ -4,7 +4,8 @@ import { motion, useAnimation } from 'framer-motion'
 const ExperienceBar = ({
     experience_level_start,
     experience_level_end,
-    start_animation
+    start_animation,
+    updateLevel
 }) => {
 
     const [levelStart, setLevelStart] = useState( Math.floor(experience_level_start) )
@@ -29,6 +30,9 @@ const ExperienceBar = ({
                 transform: { duration: 0.0 }
             })
             setLevelStart(levelStart + 1)
+        }
+        else {
+            updateLevel(levelStart)
         }
     }
 

@@ -221,7 +221,12 @@ input[type="range"]::-moz-range-thumb {
   height: 470px;
   position: relative;
   left: 0;
-  border: 1px solid black;
+}
+
+.experience-bar-container {
+  /* margin-top: 200px; */
+  position: relative;
+  top: 200px;
 }
 
 .experience-bar-container div {
@@ -274,4 +279,43 @@ input[type="range"]::-moz-range-thumb {
   background-color: #927bd1;
   position: relative;
   z-index: 1;
+}
+
+.reward-pill {
+  background-color: #4A445A;
+  border-radius: 8px;
+  color: white;
+  width: 250px;
+  height: 60px;
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reward-pill .reward-icon,
+.reward-pill .reward-text {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.reward-pill .reward-icon img {
+  position: relative;
+  top: 10px;
+}
+
+.reward-pill .reward-icon { 
+  width: 30%;
+  text-align: center;
+  height: 100%;
+}
+
+.reward-pill .reward-text { 
+  width: 70%;
+  line-height: 60px;
+  font-size: 1rem;
+}
+
+.reward-preview-area {
+  margin-top: 35px;
 }
