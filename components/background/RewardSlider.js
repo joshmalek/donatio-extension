@@ -70,7 +70,7 @@ const RewardSlider = ({
         console.log(`Reward Slider mounted!`)
         timerSequence ()
 
-        setTimeout(() => { setShowExperience(true) }, 3000)
+        setTimeout(() => { setShowExperience(true) }, 2000)
     }, [])
 
     return (<div className="reward-slider-container">
@@ -84,7 +84,7 @@ const RewardSlider = ({
         <div>
             <ExperienceBar 
                 experience_level_start={2.1} 
-                experience_level_end={3.6}
+                experience_level_end={7.6}
                 start_animation={showExperience}    
             />
         </div>

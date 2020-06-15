@@ -19,18 +19,23 @@ const ExperienceBar = ({
         // show animation from start to end
         await experienceControl.start({
             width: percent_end,
-            transform: { duration: 2 }
+            transform: { type: "ease", duration: 2 }
         })
 
         // if there is more experience to show, update the level value
         if (levelStart + 1 < Math.ceil(experience_level_end)) {
             await experienceControl.start({
                 width: '0%',
-                transform: { duration: 0.1 }
+                transform: { duration: 0.0 }
             })
             setLevelStart(levelStart + 1)
         }
     }
+
+    useEffect(() => {
+        console.log(`Experience Control`)
+        console.log(experienceControl)
+    }, [])
 
     useEffect(() => {
 

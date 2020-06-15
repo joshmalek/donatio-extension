@@ -256,6 +256,7 @@ input[type="range"]::-moz-range-thumb {
   background-color: white;
   border-radius: 30px;
   text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .experience-bar-container .experience-bar {
