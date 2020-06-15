@@ -7,6 +7,8 @@ import lottie from 'lottie-web'
 import Lottie_InProcess from '../../src/lottie-files/18176-card-payment-in-process.json'
 import Lottie_PaymentSuccess from '../../src/lottie-files/16271-payment-successful.json'
 
+import { RewardSlider } from './RewardSlider'
+
 export default class BackgroundAppContainer extends React.Component {
 
   constructor(props) {
@@ -16,7 +18,6 @@ export default class BackgroundAppContainer extends React.Component {
     console.log(this.props.donation_info)
 
     this.lottiePendingContainer = React.createRef ()
-    this.lottieSuccessContainer = React.createRef ()
 
     this.state = {
       current_user: null,
@@ -36,6 +37,7 @@ export default class BackgroundAppContainer extends React.Component {
 
   loadLottie () {
     // load lottie
+
     let lottie_files = {
       in_process: Lottie_InProcess,
       success: Lottie_PaymentSuccess
@@ -48,13 +50,7 @@ export default class BackgroundAppContainer extends React.Component {
       options.autoplay = true
       options.container = this.lottiePendingContainer.current
     }
-    else if (this.state.transaction_state == '<success>') {
-      lottie_file = lottie_files.success
-      options.loop = false
-      options.autoplay = true
-      options.container = this.lottieSuccessContainer.current
-    }
-
+    if (options.container) this.clearChildren (options.container)
     lottie.loadAnimation({
       container: options.container,
       renderer: 'svg',
@@ -62,6 +58,13 @@ export default class BackgroundAppContainer extends React.Component {
       autoplay: options.autoplay ? options.autoplay : false,
       animationData: lottie_file
     })
+  }
+
+  clearChildren (dom_element) {
+    while (dom_element.hasChildNodes()) {
+      dom_element.removeChild(dom_element.lastChild)
+      console.log(`Removed child...`)
+    }
   }
 
   processTransaction () {
@@ -110,8 +113,8 @@ export default class BackgroundAppContainer extends React.Component {
         <Navbar user={this.state.current_user} />
         
         {this.state.transaction_state == '<pending>' && <div ref={this.lottiePendingContainer} style={{height: '350px'}}></div>}
-        {this.state.transaction_state == '<success>' && <div ref={this.lottieSuccessContainer} style={{height: '350px'}}></div>}
         {this.state.transaction_state == '<pending>' && <div style={{fontSize: '1.3rem', textAlign: 'center', fontWeight: 'bold'}}>Processing transaction.</div>}
+        {this.state.transaction_state == '<success>' && <RewardSlider experience_value={10} experience_gained={12} medals_unlocked={[{name: 'Placeholder Medal', description: 'placeholder', img_url: 'https://svgur.com/i/M2e.svg'}]} />}
 
       </div>
     </div>)
