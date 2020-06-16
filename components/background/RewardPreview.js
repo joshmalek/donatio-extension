@@ -12,14 +12,31 @@ const RewardPill = ({
 }
 
 const RewardPreview = ({
-    experience_gained
+    experience_gained,
+    medals_unlocked
 }) => {
+
+    const showMedals = () => {
+        let medal_pills = []
+
+        if (medals_unlocked) {
+            for (let i = 0; i < medals_unlocked.length; ++i) {
+                medal_pills.push(<RewardPill 
+                    reward_src={medals_unlocked[i].img_url}
+                    reward_text={medals_unlocked[i].name}
+                />)
+            }
+        }
+
+        return medal_pills
+    }
 
     return (<div className="reward-preview-area">
         <RewardPill 
             reward_src={`https://svgur.com/i/M4w.svg`}
             reward_text={`+${experience_gained.toFixed(0)} exp. gained.`} 
         />
+        { showMedals () }
     </div>)
 
 }

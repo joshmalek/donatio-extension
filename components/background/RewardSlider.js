@@ -6,6 +6,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { ExperienceBar } from './experienceBar'
 import Lottie_PaymentSuccess from '../../src/lottie-files/16271-payment-successful.json'
 import { getLevel, evaluateExperience } from '../../modules/experience.module'
+import { MedalViewer } from './medalViewer'
 
 const clearChildren = (dom_element) => {
     while (dom_element.hasChildNodes()) {
@@ -27,6 +28,8 @@ const RewardSlider = ({
 
     const [startExperience, setStartExperience] = useState(false)
     const [showExperience, setShowExperience] = useState(false)
+    const [showMedals, setShowMedals] = useState(false)
+    const [medalIndex, setMedalIndex] = useState(-1)
 
     const [levelStart, setLevelStart] = useState( evaluateExperience(experience_value) )
     const [levelEnd, setLevelEnd] = useState( evaluateExperience(experience_value + experience_gained) )
@@ -45,43 +48,67 @@ const RewardSlider = ({
     }
 
     const undockSlider = async () => {
+        containerController.start({
+            opacity: 0,
+            transition: {duration: 0.2}
+        })
         await containerController.start({
-            transform: 'translate(5000px, 0px)',
+            transform: 'translate(500px, 0px)',
             transition: { duration: 0.2 }
         })
     }
 
     const redockSlider = async () => {
+        containerController.start({
+            opacity: 1,
+            transition: {duration: 0.2}
+        })
         await containerController.start({
             transform: 'translate(0px, 0px)',
             transition: { duration: 0.2 }
         })
     }
 
-    const emptySlide = async () => {
+    const emptySlide = async (should_not_clear_children) => {
+        containerController.start({
+            opacity: 0,
+            transition: {duration: 0.2}
+        })
         await containerController.start({
-            transform: 'translate(-5000px, 0px)',
+            transform: 'translate(-500px, 0px)',
             transition: { duration: 0.2 }
         })
         // TODO clear the body of the display container
-        clearChildren(contentContainer.current)
+        if (!should_not_clear_children) {
+            clearChildren(contentContainer.current)
+            containerController.start({
+                opacity: 1,
+                transition: {duration: 0.2}
+            })
+        }
         await containerController.start({
             transform: 'translate(0px, 0px)',
             transition: { duration: 0.2 }
+        })
+    }
+
+    const runTimer = async () => {
+        await timerControl.start({
+            width: '100%',
+            transition: { duration: 3.5 }
+        })
+        await timerControl.start({
+            width: '0%',
+            transition: { duration: 0.25 }
         })
     }
 
     const timerSequence = async () => {
 
         loadSuccessPayment ()
-        await timerControl.start({
-            width: '100%',
-            transition: { duration: 2 }
-        })
-        await timerControl.start({
-            width: '0%',
-            transition: { duration: 0.25 }
-        })
+        
+        await runTimer ()
+
         await emptySlide ()
         await undockSlider ()
         
@@ -89,6 +116,27 @@ const RewardSlider = ({
 
         await redockSlider ()
         setStartExperience(true)
+        
+        await runTimer ()
+
+        await emptySlide ()
+        await undockSlider ()
+
+        if (medals_unlocked) {
+            setShowMedals(true)
+
+            for (let i = 0; i < medals_unlocked.length; ++i) {
+
+                setMedalIndex(i)
+                await redockSlider ()
+            
+                await runTimer ()
+
+                await emptySlide (true)
+                await undockSlider ()
+
+            }
+        }
     }
 
     useEffect(() => { // componentDidMount ()
@@ -106,12 +154,19 @@ const RewardSlider = ({
     return (<div className="reward-slider-container">
 
         <motion.div className="rewrd-slider-content-container" animate={containerController} ref={contentContainer}>
-            {  showExperience && <ExperienceBar 
-            experience_level_start={levelStart} 
-            experience_level_end={levelEnd}
-            start_animation={startExperience}
-            updateLevel={(new_lvl) => { console.log(`Experience bar returned.`); updateLevel(new_lvl);}}    
-        /> }
+            
+                {  showExperience && <ExperienceBar 
+                    experience_level_start={levelStart} 
+                    experience_level_end={levelEnd}
+                    start_animation={startExperience}
+                    updateLevel={(new_lvl) => { console.log(`Experience bar returned.`); updateLevel(new_lvl);}}    
+                /> }
+                { showMedals && <MedalViewer 
+                    medal_name={medalIndex >= 0 && medalIndex < medals_unlocked.length ? medals_unlocked[medalIndex].name : "<null>"} 
+                    medal_src={medalIndex >= 0 && medalIndex < medals_unlocked.length ? medals_unlocked[medalIndex].img_url : "<null>"} 
+                    medal_description={medalIndex >= 0 && medalIndex < medals_unlocked.length ? medals_unlocked[medalIndex].description : "<null>"}
+                />}
+            
         </motion.div>
 
         <div className="slider-timer-container">
