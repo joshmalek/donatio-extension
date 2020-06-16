@@ -179,6 +179,15 @@ input[type="range"]::-moz-range-thumb {
   margin-left: 10px;
 }
 
+.donatio-navbar .medals-area {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  margin-left: 15px;
+  position: relative;
+  top: 10px;
+}
+
 .donatio-navbar .left,
 .donatio-navbar .right {
   display: inline-block;
