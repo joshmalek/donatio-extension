@@ -179,6 +179,15 @@ input[type="range"]::-moz-range-thumb {
   margin-left: 10px;
 }
 
+.donatio-navbar .medals-area {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  margin-left: 15px;
+  position: relative;
+  top: 10px;
+}
+
 .donatio-navbar .left,
 .donatio-navbar .right {
   display: inline-block;
@@ -318,4 +327,27 @@ input[type="range"]::-moz-range-thumb {
 
 .reward-preview-area {
   margin-top: 35px;
+}
+
+.medal-viewer {
+  text-align: center;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.medal-viewer .image-area {
+  height: 65%;
+}
+
+.medal-viewer .text-area {
+  position: relative;
+  height: 35px;
+  font-size: 1.4rem;
+}
+
+.medal-viewer .description-area {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
 }

@@ -104,7 +104,7 @@ export default class BackgroundAppContainer extends React.Component {
 
   getCurrentUser () {
     axios.post('http://localhost:4000/graphql', {
-      'query': `{ user(_id: "5ee2a62b9bd5ef93fc546c02") { firstName, lastName, experience, medals { name } } }`
+      'query': `{ user(_id: "5ee2a62b9bd5ef93fc546c02") { firstName, lastName, experience, medals { name, img_url } } }`
     })
     .then (res => {
       console.log(res)
@@ -127,11 +127,12 @@ export default class BackgroundAppContainer extends React.Component {
           <RewardSlider 
             experience_value={ this.state.donation_data == null ? 0 : this.state.donation_data.previous_experience_value } 
             experience_gained={ this.state.donation_data == null ? 0 : this.state.donation_data.experience_gained }
-            medals_unlocked={[{name: 'Placeholder Medal', description: 'placeholder', img_url: 'https://svgur.com/i/M2e.svg'}]}
+            medals_unlocked={this.state.donation_data == null ? [] : this.state.donation_data.medals_unlocked }
             updateLevel={(new_lvl) => { console.log(`Reward Slider returned.`); this.updateLevel(new_lvl) }} 
           />}
           <RewardPreview
             experience_gained={ this.state.donation_data == null ? 0 : this.state.donation_data.experience_gained }
+            medals_unlocked={this.state.donation_data == null ? [] : this.state.donation_data.medals_unlocked }
           />
 
       </div>

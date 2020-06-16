@@ -16,12 +16,28 @@ export default class Navbar extends React.Component {
     return lvl_
   }
 
+  getTopMedals () {
+    let top_medals = []
+
+    if (this.props.user && this.props.user.medals) {
+      for (let i = 0; i < Math.min(3, this.props.user.medals.length); ++i) {
+        let medal_ = this.props.user.medals[i]
+        top_medals.push(<img src={medal_.img_url} width="30px" height="30px" />)
+      }
+    }
+
+    return top_medals
+  }
+
   render () {
     return (<div className="donatio-navbar">
         <div className="left">
           <div className="logo-area"><img src="https://svgur.com/i/M1m.svg" height="50px" /></div>
           <div className="name-area">
-  {this.props.user==null ? '<firstname>':this.props.user.firstName} {this.props.user==null ? '<lastname>':this.props.user.lastName} <div className="level-area">Lv. { this.getLevel() }</div></div>
+            {this.props.user==null ? '<firstname>':this.props.user.firstName} {this.props.user==null ? '<lastname>':this.props.user.lastName} 
+            <div className="level-area">Lv. { this.getLevel() }</div>
+            <div className="medals-area">{ this.getTopMedals() }</div>
+          </div>
         </div>
         <div className="right"></div>
       </div>)
