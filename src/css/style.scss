@@ -1,9 +1,44 @@
+// Mixins
+
+// Style
+
+$__white: #ffffff;
+$__black: #202020;
+$__red: #f25353;
+
+@font-face {
+  font-family: WorkSans;
+  src: url(../fonts/WorkSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/OpenSans/OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: Yan;
+  src: url(../fonts/Yantramanav/Yantramanav-Regular.ttf);
+}
+
+@font-face {
+  font-family: Yan;
+  src: url(../fonts/Yantramanav/Yantramanav-Medium.ttf);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Yan;
+  src: url(../fonts/Yantramanav/Yantramanav-Bold.ttf);
+  font-weight: bold;
+}
+
 .donatio-selector {
   border: 5px solid black;
 }
 
 .donatio-selector {
-  border: 1px solid #C8C8C8;
+  border: 1px solid #c8c8c8;
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.16);
   padding: 10px 20px;
   margin-bottom: 15px;
@@ -12,13 +47,13 @@
 }
 
 .donatio-selector.active {
-  border: 1px solid #49C58B;
+  border: 1px solid #49c58b;
 }
 
 .donatio-selector .donatio-title {
   text-align: left;
   font-size: 14px;
-  color: #FF5252;
+  color: #ff5252;
   font-weight: bold;
   height: 20px;
   line-height: 20px;
@@ -34,7 +69,7 @@
 }
 
 .donatio-selector .price-to-donate {
-  color: #49C58B;
+  color: #49c58b;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
@@ -77,30 +112,30 @@
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
- background: #7A7A7A;
- height: 2px;
+  background: #7a7a7a;
+  height: 2px;
 }
 
 input[type="range"]::-moz-range-track {
- background: #7A7A7A;
- height: 2px;
+  background: #7a7a7a;
+  height: 2px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
- -webkit-appearance: none;
- height: 15px;
- width: 15px;
- background: #7A7A7A;
- margin-top: -5px;
- border-radius: 50%;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background: #7a7a7a;
+  margin-top: -5px;
+  border-radius: 50%;
 }
 
 input[type="range"]::-moz-range-thumb {
- height: 15px;
- width: 15px;
- background: #7A7A7A;
- margin-top: -5px;
- border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background: #7a7a7a;
+  margin-top: -5px;
+  border-radius: 50%;
 }
 
 .right-cell {
@@ -117,7 +152,7 @@ input[type="range"]::-moz-range-thumb {
   text-align: right;
 }
 .active-donation-text {
-  color: #49C58B !important;
+  color: #49c58b !important;
 }
 
 .charity-of-day-area {
@@ -138,20 +173,15 @@ input[type="range"]::-moz-range-thumb {
   font-size: 10px;
 }
 
-@font-face {
-  font-family: WorkSans;
-  src: url(../fonts/WorkSans-VariableFont_wght.ttf)
-}
-
 .background-container {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #332E41;
-  color: white;
-  font-family: WorkSans;
+  background-color: $__white;
+  color: $__black;
+  font-family: OpenSans;
 }
 
 .background-container .center-container {
@@ -161,14 +191,14 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .donatio-navbar {
-  color: white;
+  color: $__black;
 }
 
 .donatio-navbar .level-area {
-  color: #332E41;
-  background-color: white;
+  color: $__white;
+  background-color: $__black;
   border-radius: 3px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: bold;
   height: 20px;
   line-height: 20px;
@@ -203,23 +233,25 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .donatio-navbar .left .name-area {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-left: 15px;
+  color: $__black;
+  font-family: Yan;
+  font-weight: 600;
 }
 
 .reward-slider-container {
-
 }
 
 .slider-timer-container {
-  background-color: #100f12;
+  background-color: rgba(0, 0, 0, 0.3);
   height: 5px;
   width: 100%;
   border-radius: 5px;
 }
 
 .slider-timer-filler {
-  background-color: white;
+  background-color: $__black;
   height: 5px;
   width: 3%;
   border-radius: 5px;
@@ -247,13 +279,22 @@ input[type="range"]::-moz-range-thumb {
   width: 25%;
 }
 
-.experience-bar-container .level-area.level-left { 
+.experience-bar-container .level-area.level-left {
   text-align: right;
   position: relative;
   left: 5px;
   z-index: 2;
 }
-.experience-bar-container .level-area.level-right { 
+
+.experience-bar-container .level-area.level-left .level-circle {
+  background-color: #959fc7;
+}
+
+.experience-bar-container .level-area.level-right .level-circle {
+  background-color: #959fc7;
+}
+
+.experience-bar-container .level-area.level-right {
   text-align: left;
   position: relative;
   z-index: 2;
@@ -266,8 +307,7 @@ input[type="range"]::-moz-range-thumb {
   line-height: 40px;
   color: black;
   font-weight: bold;
-  font-size: 1.3rem;
-  background-color: white;
+  font-size: 0.9rem;
   border-radius: 30px;
   text-align: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
@@ -275,7 +315,7 @@ input[type="range"]::-moz-range-thumb {
 
 .experience-bar-container .experience-bar {
   height: 10px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.3);
   width: 50%;
   position: relative;
   top: 15px;
@@ -285,17 +325,17 @@ input[type="range"]::-moz-range-thumb {
 .experience-bar-container .experience-bar .experience-bar-filler {
   height: 10px;
   width: 50%;
-  background-color: #927bd1;
+  background-color: #959fc7;
   position: relative;
   z-index: 1;
 }
 
 .reward-pill {
-  background-color: #4A445A;
+  background-color: white;
   border-radius: 8px;
-  color: white;
+  color: $__black;
   width: 250px;
-  height: 60px;
+  height: 50px;
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
@@ -313,16 +353,21 @@ input[type="range"]::-moz-range-thumb {
   top: 10px;
 }
 
-.reward-pill .reward-icon { 
-  width: 30%;
+.reward-pill .reward-icon {
+  width: 20%;
   text-align: center;
   height: 100%;
+  background-color: $__red;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
-.reward-pill .reward-text { 
-  width: 70%;
-  line-height: 60px;
-  font-size: 1rem;
+.reward-pill .reward-text {
+  width: 80%;
+  line-height: 50px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  padding-left: 15px;
 }
 
 .reward-preview-area {
@@ -357,7 +402,7 @@ input[type="range"]::-moz-range-thumb {
   display: inline-block;
   vertical-align: top;
   position: relative;
-  top: 10px;
+  top: 5px;
   cursor: pointer;
 }
 
@@ -376,10 +421,10 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .twitter-button .text-area {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 40px;
   margin-left: 10px;
-  color: #1DA1F2;
+  color: #2290d4;
   font-weight: bold;
 }
 
