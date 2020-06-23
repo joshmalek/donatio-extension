@@ -339,6 +339,7 @@ input[type="range"]::-moz-range-thumb {
   display: inline-block;
   margin-right: 20px;
   cursor: pointer;
+  margin-bottom: 20px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -390,6 +391,8 @@ input[type="range"]::-moz-range-thumb {
   position: relative;
   height: 35px;
   font-size: 1.4rem;
+  font-family: Yan;
+  font-weight: 600;
 }
 
 .medal-viewer .description-area {
@@ -433,7 +436,7 @@ input[type="range"]::-moz-range-thumb {
   height: 90px;
   font-size: 1rem;
   background-color: none;
-  border: 2px solid white;
+  border: 2px solid $__black;
   border-radius: 5px;
   position: relative;
   margin-top: 20px;
@@ -445,22 +448,24 @@ input[type="range"]::-moz-range-thumb {
   resize: none;
   border: none;
   background-color: transparent;
-  color: white;
+  color: $__black;
   outline: none;
   padding: 10px 15px;
-  font-size: 1.4rem;
-  font-family: WorkSans;
+  font-size: 1.2rem;
+  font-family: OpenSans;
 }
 
 .twitter-status-update .send-tweet-button {
   position: absolute;
   height: 45px;
-  background-color: #757fbf;
+  background-color: $__black;
+  color: white;
   line-height: 45px;
   right: -2px;
   bottom: -2px;
   padding: 0 20px;
   cursor: pointer;
+  font-family: OpenSans;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 5px;
   box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.05);
@@ -468,7 +473,7 @@ input[type="range"]::-moz-range-thumb {
 
 .tweet-sent-message {
   font-size: 1.5rem;
-  color: white;
+  color: $__black;
   text-align: center;
   margin-top: 30px;
 }
