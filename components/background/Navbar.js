@@ -50,7 +50,7 @@ export default class Navbar extends React.Component {
     let top_medals = [];
 
     if (this.props.user && this.props.user.medals) {
-      for (let i = 0; i < Math.min(3, this.props.user.medals.length); ++i) {
+      for (let i = 0; i < Math.min(5, this.props.user.medals.length); ++i) {
         let medal_ = this.props.user.medals[i];
 
         // TODO implement new medal aquisition system.
