@@ -190,7 +190,7 @@ const RewardSlider = ({
             }
             medal_src={
               medalIndex >= 0 && medalIndex < medals_unlocked.length
-                ? medals_unlocked[medalIndex].img_url
+                ? "<TODO implement new medal serving system>"
                 : "<null>"
             }
             medal_description={

@@ -28,9 +28,9 @@ export default class Navbar extends React.Component {
     if (this.props.user && this.props.user.medals) {
       for (let i = 0; i < Math.min(3, this.props.user.medals.length); ++i) {
         let medal_ = this.props.user.medals[i];
-        top_medals.push(
-          <img src={medal_.img_url} width="30px" height="30px" />
-        );
+
+        // TODO implement new medal aquisition system.
+        top_medals.push(<img width="30px" height="30px" />);
       }
     }
 
