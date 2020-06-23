@@ -196,7 +196,7 @@ const RewardSlider = ({
             }
             medal_description={
               medalIndex >= 0 && medalIndex < medals_unlocked.length
-                ? medals_unlocked[medalIndex].description
+                ? `You ${medals_unlocked[medalIndex].description}`
                 : "<null>"
             }
           />
