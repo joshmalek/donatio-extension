@@ -477,3 +477,31 @@ input[type="range"]::-moz-range-thumb {
   text-align: center;
   margin-top: 30px;
 }
+
+.name-medal-icon {
+  display: inline-block;
+  vertical-align: top;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.medal-icon-hover-desc {
+  position: absolute;
+  background-color: $__black;
+  bottom: -23px;
+  color: $__white;
+  height: 23px;
+  line-height: 23px;
+  border-radius: 3px;
+  text-align: center;
+  transition: all 0.25s;
+  opacity: 0;
+}
+
+.name-medal-icon:hover .medal-icon-hover-desc {
+  opacity: 1;
+  bottom: -33px;
+}
