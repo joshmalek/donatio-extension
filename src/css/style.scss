@@ -381,10 +381,11 @@ input[type="range"]::-moz-range-thumb {
   margin: 0 auto;
   position: relative;
   height: 100%;
+  top: 90px;
 }
 
 .medal-viewer .image-area {
-  height: 65%;
+  height: 45%;
 }
 
 .medal-viewer .text-area {
@@ -393,11 +394,13 @@ input[type="range"]::-moz-range-thumb {
   font-size: 1.4rem;
   font-family: Yan;
   font-weight: 600;
+  margin-top: 20px;
+  font-family: Yan;
 }
 
 .medal-viewer .description-area {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: $__black;
 }
 
 .twitter-button {
