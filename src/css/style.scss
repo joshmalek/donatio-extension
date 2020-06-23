@@ -341,6 +341,13 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   margin-bottom: 20px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  transition: border 0.25s;
+  border: 1px solid white;
+}
+
+.reward-pill:hover {
+  border: 1px solid $__black;
 }
 
 .reward-pill .reward-icon,
@@ -358,7 +365,7 @@ input[type="range"]::-moz-range-thumb {
   width: 20%;
   text-align: center;
   height: 100%;
-  background-color: $__red;
+  background-color: $__black;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
 }
@@ -381,10 +388,11 @@ input[type="range"]::-moz-range-thumb {
   margin: 0 auto;
   position: relative;
   height: 100%;
+  top: 90px;
 }
 
 .medal-viewer .image-area {
-  height: 65%;
+  height: 45%;
 }
 
 .medal-viewer .text-area {
@@ -393,11 +401,13 @@ input[type="range"]::-moz-range-thumb {
   font-size: 1.4rem;
   font-family: Yan;
   font-weight: 600;
+  margin-top: 20px;
+  font-family: Yan;
 }
 
 .medal-viewer .description-area {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: $__black;
 }
 
 .twitter-button {
@@ -476,4 +486,32 @@ input[type="range"]::-moz-range-thumb {
   color: $__black;
   text-align: center;
   margin-top: 30px;
+}
+
+.name-medal-icon {
+  display: inline-block;
+  vertical-align: top;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.medal-icon-hover-desc {
+  position: absolute;
+  background-color: $__black;
+  bottom: -23px;
+  color: $__white;
+  height: 23px;
+  line-height: 23px;
+  border-radius: 3px;
+  text-align: center;
+  transition: all 0.25s;
+  opacity: 0;
+}
+
+.name-medal-icon:hover .medal-icon-hover-desc {
+  opacity: 1;
+  bottom: -33px;
 }
