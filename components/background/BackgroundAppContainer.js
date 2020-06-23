@@ -24,6 +24,7 @@ export default class BackgroundAppContainer extends React.Component {
       transaction_state: "<pending>",
       donation_data: null,
       updated_level: null,
+      updated_medals: null,
     };
   }
 
@@ -119,6 +120,10 @@ export default class BackgroundAppContainer extends React.Component {
       });
   }
 
+  updateMedals(new_medals) {
+    this.setState({ updated_medals: new_medals });
+  }
+
   render() {
     return (
       <div className="background-container">
@@ -126,6 +131,7 @@ export default class BackgroundAppContainer extends React.Component {
           <Navbar
             user={this.state.current_user}
             updatedLevel={this.state.updated_level}
+            updatedMedals={this.state.updated_medals}
           />
 
           {this.state.transaction_state == "<pending>" && (
@@ -165,6 +171,11 @@ export default class BackgroundAppContainer extends React.Component {
               updateLevel={(new_lvl) => {
                 console.log(`Reward Slider returned.`);
                 this.updateLevel(new_lvl);
+              }}
+              updateMedals={(new_medals) => {
+                console.log(`New Medals returned`);
+                console.log(new_medals);
+                this.updateMedals(new_medals);
               }}
             />
           )}

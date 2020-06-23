@@ -21,6 +21,7 @@ const RewardSlider = ({
   experience_gained,
   medals_unlocked,
   updateLevel,
+  updateMedals,
 }) => {
   const contentContainer = useRef(null);
   const timerControl = useAnimation();
@@ -137,6 +138,12 @@ const RewardSlider = ({
 
         await emptySlide(true);
         await undockSlider();
+      }
+
+      if (medals_unlocked.length > 0) {
+        // inform the parent component to update the list
+        // of awards to display.
+        updateMedals(medals_unlocked);
       }
     }
 

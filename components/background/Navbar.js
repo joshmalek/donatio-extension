@@ -9,6 +9,36 @@ import { getLevel } from "../../modules/experience.module";
 export default class Navbar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      user: null,
+      medals_updated: false,
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      user: this.props.user,
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // get updated medals, if there are any
+    if (this.props.updatedMedals != null && !this.state.medals_updated) {
+      let new_user = this.props.user;
+      new_user.medals = [...new_user.medals, ...this.props.updatedMedals];
+      console.log(`Medals Updated -> New User`);
+      console.log(new_user);
+
+      this.setState({
+        user: new_user,
+        medals_updated: true,
+      });
+    }
+
+    // this.setState({
+    //   user: new_user,
+    // });
   }
 
   getLevel() {
@@ -49,7 +79,7 @@ export default class Navbar extends React.Component {
   getTopMedals() {
     let top_medals = [];
 
-    if (this.props.user && this.props.user.medals) {
+    if (this.state.user && this.state.user.medals) {
       for (let i = 0; i < Math.min(5, this.props.user.medals.length); ++i) {
         let medal_ = this.props.user.medals[i];
 
