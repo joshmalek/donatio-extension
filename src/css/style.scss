@@ -182,7 +182,8 @@ input[type="range"]::-moz-range-thumb {
   background-color: $__white;
   color: $__black;
   font-family: OpenSans;
-  background: linear-gradient(180deg, #ffffff, #db97b4);
+  background: linear-gradient(290deg, #e196b3, rgba(255, 0, 0, 0) 70.71%),
+    linear-gradient(7deg, #93a0c8, rgba(0, 255, 0, 0) 70.71%);
 }
 
 .background-container .center-container {
