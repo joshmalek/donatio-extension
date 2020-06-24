@@ -1,67 +1,103 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
+
+import Logo from "../src/icons/logo.svg";
+
+import { WidgetIntro } from "./WidgetIntro";
+import { WidgetScroller } from "./WidgetScroller";
 
 export default class SmallDonationWidget extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.sliderRef = React.createRef ()
-    window.donatio_global.attachComponent(this)
+    this.sliderRef = React.createRef();
+    window.donatio_global.attachComponent(this);
   }
 
-  getContributionValue () {
-    let subtotal = window.donatio_global.getSubtotal()
-    let ratio = window.donatio_global.getDonationRatio()
-    if (subtotal == null) return '0.00'
-    else return `${subtotal.symbol} ${(subtotal.floatValue * ratio ).toFixed(2)}`
+  getContributionValue() {
+    let subtotal = window.donatio_global.getSubtotal();
+    let ratio = window.donatio_global.getDonationRatio();
+    if (subtotal == null) return "0.00";
+    else
+      return `${subtotal.symbol} ${(subtotal.floatValue * ratio).toFixed(2)}`;
   }
 
-  processTransaction () {
-    if (window.donatio_global.donationActive ()) {
-      let transaction_amount = window.donatio_global.getDonationTotal ();
-      let npo_id = window.donatio_global.getCharityId ();
-      chrome.runtime.sendMessage({transaction_amount, npo_id, type: 'process_donation'}, function (response) {
-        console.log(`Message Response:`)
-        console.log(response)
-      })
+  processTransaction() {
+    if (window.donatio_global.donationActive()) {
+      let transaction_amount = window.donatio_global.getDonationTotal();
+      let npo_id = window.donatio_global.getCharityId();
+      chrome.runtime.sendMessage(
+        { transaction_amount, npo_id, type: "process_donation" },
+        function (response) {
+          console.log(`Message Response:`);
+          console.log(response);
+        }
+      );
     }
   }
 
-  setRatio (e) {
-    window.donatio_global.setDonationRatio(parseInt(e.target.value)/100)
-    .then(() => this.forceUpdate ())
+  setRatio(e) {
+    window.donatio_global
+      .setDonationRatio(parseInt(e.target.value) / 100)
+      .then(() => this.forceUpdate());
+  }
+
+  setValueRatio(val) {
+    window.donatio_global
+      .setDonationRatio(parseInt(val) / 100)
+      .then(() => this.forceUpdate());
   }
 
   render() {
-    return (<React.Fragment>
-      <div className={`donatio-selector ${window.donatio_global.donationActive() ? 'active' : ''}`}>
-        <div onClick={() => {
-          window.donatio_global.toggleDonationActive ()
-          .then(() => {
-            this.forceUpdate ()
-          })
-        }}>
-          <div className="donatio-title"> <img width="20px" src="https://i.imgur.com/e7YTpqd.png" /> DonatIO</div>
-          <div className="donatio-donation-prompt">Click me to donate to charity with your checkout.</div>
-        </div>
-        {window.donatio_global.donationActive () && <div>
-          <div className="slider-area">
-            <div className="slider-left-label">5%</div>
-            <div className="slider-widget">
-              <input onChange={(e) => { this.setRatio(e) }} ref={this.sliderRef} type="range" min="5" max="100" />
+    return (
+      <React.Fragment>
+        <div className="widget-container">
+          <div className="logo-header">
+            <div className="logo-box">
+              <img src={Logo} />
             </div>
-            <div className="slider-right-label">100%</div>
+            <div className="logo-text">Donatio</div>
           </div>
-
-          <div className="price-to-donate">+{ this.getContributionValue() }</div>
-          <div className="charity-of-day-area">
-          <div class="label">Charity of the Day</div>
-            <div class="name">{ window.donatio_global.getCharityName () }</div>
-          </div>
-        </div>}
-      </div>
-      <button onClick={() => { this.processTransaction () }} style={{marginBottom: '40px'}}>Sample Complete Order</button>
-    </React.Fragment>)
+          <WidgetIntro
+            donateClick={() => {
+              console.log(`Clicked!`);
+              window.donatio_global.toggleDonationActive().then(() => {
+                this.forceUpdate();
+              });
+            }}
+            isVisible={!window.donatio_global.donationActive()}
+          />
+          <WidgetScroller
+            sliderChange={(e, val) => {
+              this.setValueRatio(val);
+            }}
+            cancelClick={() => {
+              window.donatio_global.toggleDonationActive().then(() => {
+                this.forceUpdate();
+              });
+            }}
+            donationValue={`+${this.getContributionValue()}`}
+            isVisible={window.donatio_global.donationActive()}
+          />
+        </div>
+        <button
+          onClick={() => {
+            this.processTransaction();
+          }}
+          style={{ marginBottom: "40px" }}
+        >
+          Sample Complete Order
+        </button>
+      </React.Fragment>
+    );
   }
 }
+
+// () => {
+//   console.log(`Clicked!`);
+// window.donatio_global.toggleDonationActive().then(() => {
+//   this.forceUpdate();
+// });
+// }
+
+// isVisible={window.donatio_global.donationActive()}

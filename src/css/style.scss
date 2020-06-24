@@ -516,3 +516,147 @@ input[type="range"]::-moz-range-thumb {
   opacity: 1;
   bottom: -33px;
 }
+
+// BREAK
+
+.App {
+  font-family: sans-serif;
+  margin: 50px;
+}
+
+.logo-header .logo-box {
+  width: 35px;
+  height: 35px;
+}
+
+.logo-header .logo-box img {
+  width: 100%;
+  height: 100%;
+}
+
+.logo-header .logo-box,
+.logo-header .logo-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-header .logo-text {
+  font-size: 1.3 rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.parallel-btn {
+  background-color: #202020;
+  width: 180px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 auto;
+  transform: skew(-40deg, 0deg);
+  margin: 30px auto 15px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.parallel-btn .btn-text {
+  transform: skew(40deg, 0deg);
+}
+
+.widget-container .paragraph-area {
+  margin: 10px 30px 0px 30px;
+  font-size: 0.9rem;
+}
+
+.widget-container {
+  background-color: #999fc6;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #999fc6, #c999b9);
+  color: white;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 50px;
+}
+
+.scroll-area {
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto 0px;
+  width: 90%;
+}
+
+.slider-element {
+  width: 100%;
+  position: relative;
+  top: -5px;
+}
+
+.donation-amount {
+  text-align: center;
+  color: #52ecbd;
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin-top: 0px;
+}
+
+.label-value {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 10px;
+  position: relative;
+  transform: scale(0.9);
+}
+
+.label-value .label-area {
+  background-color: #202020;
+  width: 110px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 0.7rem;
+  transform: skew(-40deg, 0deg);
+  border-radius: 5px;
+  position: relative;
+  z-index: 2;
+  left: -10px;
+}
+
+.label-value .label-area .label-text {
+  transform: skew(40deg, 0deg);
+}
+
+.label-value .label-value {
+  color: #202020;
+  background-color: white;
+  height: 30px;
+  line-height: 30px;
+  width: 135px;
+  position: absolute;
+  top: -8px;
+  left: 95px;
+  transform: skew(-40deg, 0deg);
+  border-radius: 5px;
+  z-index: 1;
+  box-shadow: 0px 0px 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.label-value .label-value .label-text {
+  transform: skew(40deg, 0deg);
+  margin-left: 15px;
+}
+
+.widget-cancel-button {
+  color: #2732d5;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.widget-cancel-button:hover {
+  color: #19218c;
+}
