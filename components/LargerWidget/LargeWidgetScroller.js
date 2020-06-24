@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Slider } from "@material-ui/core";
 
-const WidgetScroller = ({
+const LargeWidgetScroller = ({
   isVisible,
-  cancelClick,
   sliderChange,
   donationValue,
+  cancelClick,
 }) => {
   const containerController = useAnimation();
 
@@ -33,7 +33,6 @@ const WidgetScroller = ({
       hideIt();
     }
   }, [isVisible]);
-
   return (
     <motion.div animate={containerController}>
       <div className="scroll-area">
@@ -51,14 +50,18 @@ const WidgetScroller = ({
         </div>
         <div style={{ flexGrow: 1, textAlign: "right" }}>100%</div>
       </div>
-      <div className="donation-amount">{donationValue}</div>
-      <div className="label-value">
-        <div className="label-area">
-          <div className="label-text">Today's Charity</div>
-        </div>
-        <div className="label-value-inp">
-          <div className="label-text">
-            {window.donatio_global.getCharityName()}
+      <div className="larger-donation-info-area">
+        <div className="donatio-donation-value">{donationValue}</div>
+        <div className="donatio-donation-charity">
+          <div className="label-value" style={{ margin: 0 }}>
+            <div className="label-area">
+              <div className="label-text">Today's Charity</div>
+            </div>
+            <div className="label-value-inp">
+              <div className="label-text">
+                {window.donatio_global.getCharityName()}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -74,4 +77,4 @@ const WidgetScroller = ({
   );
 };
 
-export { WidgetScroller };
+export { LargeWidgetScroller };
