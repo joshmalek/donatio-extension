@@ -24,6 +24,11 @@ export default class Navbar extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     // get updated medals, if there are any
+    if (this.props.user != null && this.state.user == null) {
+      this.setState({
+        user: this.props.user,
+      });
+    }
     if (this.props.updatedMedals != null && !this.state.medals_updated) {
       let new_user = this.props.user;
       new_user.medals = [...new_user.medals, ...this.props.updatedMedals];
