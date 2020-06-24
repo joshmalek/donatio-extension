@@ -3,6 +3,7 @@ import Twitter from "twitter-lite";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
 
+import { AssetVars } from "../../src/js/assetVars";
 import TwitterIcon from "../../src/icons/twitter.svg";
 
 const RewardPill = ({ reward_src, reward_text }) => {
@@ -70,7 +71,7 @@ const RewardPreview = ({ experience_gained, medals_unlocked }) => {
       for (let i = 0; i < medals_unlocked.length; ++i) {
         medal_pills.push(
           <RewardPill
-            reward_src={medals_unlocked[i].img_url}
+            reward_src={AssetVars[medals_unlocked[i].asset_key]}
             reward_text={medals_unlocked[i].name}
           />
         );

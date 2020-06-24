@@ -4,6 +4,7 @@ import lottie from "lottie-web";
 import { motion, useAnimation } from "framer-motion";
 
 import { ExperienceBar } from "./experienceBar";
+import { AssetVars } from "../../src/js/assetVars";
 import Lottie_PaymentSuccess from "../../src/lottie-files/16271-payment-successful.json";
 import { getLevel, evaluateExperience } from "../../modules/experience.module";
 import { MedalViewer } from "./medalViewer";
@@ -20,6 +21,7 @@ const RewardSlider = ({
   experience_gained,
   medals_unlocked,
   updateLevel,
+  updateMedals,
 }) => {
   const contentContainer = useRef(null);
   const timerControl = useAnimation();
@@ -137,6 +139,12 @@ const RewardSlider = ({
         await emptySlide(true);
         await undockSlider();
       }
+
+      if (medals_unlocked.length > 0) {
+        // inform the parent component to update the list
+        // of awards to display.
+        updateMedals(medals_unlocked);
+      }
     }
 
     // hide the wrapper
@@ -190,12 +198,12 @@ const RewardSlider = ({
             }
             medal_src={
               medalIndex >= 0 && medalIndex < medals_unlocked.length
-                ? "<TODO implement new medal serving system>"
+                ? AssetVars[medals_unlocked[medalIndex].asset_key]
                 : "<null>"
             }
             medal_description={
               medalIndex >= 0 && medalIndex < medals_unlocked.length
-                ? medals_unlocked[medalIndex].description
+                ? `You ${medals_unlocked[medalIndex].description}`
                 : "<null>"
             }
           />
