@@ -4,6 +4,7 @@ import GlobalRoot from "./components/GlobalRoot";
 import SmallDonationWidget from "./components/SmallDonationWidget";
 import LargeDonationWidget from "./components/LargerWidget/LargeDonationWidget";
 import AmazonOrderTotalInhibitor from "./components/AmazonOrderTotalInhibitor";
+import AmazonOrderTotalLargeInhibitor from "./components/LargerWidget/AmazonOrderTotalLargeInhibitor";
 
 import "./src/css/style.scss";
 
@@ -40,6 +41,29 @@ window.addEventListener("load", function () {
     subtotalObserver.observe(cart_subtotal_table, {
       childList: true,
     });
+  }
+
+  // larget subtotal inhibitor
+  let cart_large_subtotal_area = document.getElementById(
+    "subtotals-marketplace-spp-bottom"
+  );
+  if (cart_large_subtotal_area) {
+    largeSubtotalInhibitor(cart_large_subtotal_area);
+  } else {
+    const largeSubtotalObserver = new MutationObserver(
+      (mutationList, observer) => {
+        for (mutation of mutationList) {
+          if (mutation.type === "childList") {
+            const targetSubtotalArea = document.querySelector(
+              "subtotals-marketplace-spp-bottom"
+            );
+            if (targetSubtotalArea) {
+              largeSubtotalInhibitor(cart_large_subtotal_area);
+            }
+          }
+        }
+      }
+    );
   }
 
   // (3) insert the small donation widget at the top of the righthand checkout modal
@@ -136,6 +160,26 @@ const subtotalInhibition = (table_row) => {
     ReactDOM.render(
       <AmazonOrderTotalInhibitor defaultSubtotal={cached_subtotal} />,
       document.getElementById("donatio-subtotal-rows")
+    );
+  }
+};
+
+const largeSubtotalInhibitor = (subtotal_element) => {
+  console.log(`Larger Subtotal!`);
+  console.log(subtotal_element);
+  if (subtotal_element) {
+    const newLargeSubtotal = document.createElement("span");
+    newLargeSubtotal.setAttribute("id", "donatio-large-subtotal-inhibotor");
+    subtotal_element.parentNode.insertBefore(
+      newLargeSubtotal,
+      subtotal_element
+    );
+
+    subtotal_element.remove();
+
+    ReactDOM.render(
+      <AmazonOrderTotalLargeInhibitor />,
+      document.getElementById("donatio-large-subtotal-inhibotor")
     );
   }
 };
