@@ -554,10 +554,13 @@ input[type="range"]::-moz-range-thumb {
   line-height: 35px;
   margin: 0 auto;
   transform: skew(-40deg, 0deg);
-  margin: 30px auto 15px;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.parallel-btn.smaller-widget-button {
+  margin: 30px auto 15px;
 }
 
 .parallel-btn .btn-text {
@@ -577,7 +580,7 @@ input[type="range"]::-moz-range-thumb {
   background: linear-gradient(90deg, #999fc6, #c999b9);
   color: white;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .scroll-area {
@@ -628,14 +631,14 @@ input[type="range"]::-moz-range-thumb {
   transform: skew(40deg, 0deg);
 }
 
-.label-value .label-value {
+.label-value .label-value-inp {
   color: #202020;
   background-color: white;
   height: 30px;
   line-height: 30px;
   width: 135px;
   position: absolute;
-  top: -8px;
+  top: 2px;
   left: 95px;
   transform: skew(-40deg, 0deg);
   border-radius: 5px;
@@ -643,7 +646,7 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: 0px 0px 3px 6px rgba(0, 0, 0, 0.05);
 }
 
-.label-value .label-value .label-text {
+.label-value .label-value-inp .label-text {
   transform: skew(40deg, 0deg);
   margin-left: 15px;
 }
@@ -660,4 +663,38 @@ input[type="range"]::-moz-range-thumb {
 
 .widget-cancel-button:hover {
   color: #19218c;
+}
+
+.donatio-larger-widget-intro-area {
+  display: flex;
+  margin: 15px 20px 0;
+}
+
+.donatio-larger-widget-intro-area .widget-paragraph-area {
+  flex-grow: 3;
+}
+
+.donatio-larger-widget-intro-area .widget-button-area {
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.larger-donation-info-area {
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+
+  .donatio-donation-value {
+    flex-grow: 1;
+    text-align: center;
+    color: #52ecbd;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin-top: 0px;
+  }
+
+  .donatio-donation-charity {
+    flex-grow: 1;
+  }
 }

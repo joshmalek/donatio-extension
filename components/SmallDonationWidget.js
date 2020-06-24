@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Logo from "../src/icons/logo.svg";
 
@@ -18,8 +17,7 @@ export default class SmallDonationWidget extends React.Component {
     let subtotal = window.donatio_global.getSubtotal();
     let ratio = window.donatio_global.getDonationRatio();
     if (subtotal == null) return "0.00";
-    else
-      return `${subtotal.symbol} ${(subtotal.floatValue * ratio).toFixed(2)}`;
+    else return `${subtotal.symbol}${(subtotal.floatValue * ratio).toFixed(2)}`;
   }
 
   processTransaction() {

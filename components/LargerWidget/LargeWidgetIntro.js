@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-const WidgetIntro = ({ donateClick, isVisible }) => {
+const LargeWidgetIntro = ({ donateClick, isVisible }) => {
   const containerController = useAnimation();
 
   const hideIntro = async () => {
@@ -15,7 +15,7 @@ const WidgetIntro = ({ donateClick, isVisible }) => {
   const showIntro = async () => {
     await containerController.start({
       opacity: 1,
-      display: "block",
+      display: "flex",
       transition: { duration: 2 },
     });
   };
@@ -30,20 +30,25 @@ const WidgetIntro = ({ donateClick, isVisible }) => {
   }, [isVisible]);
 
   return (
-    <motion.div animate={containerController}>
-      <div className="paragraph-area">
+    <motion.div
+      animate={containerController}
+      className="donatio-larger-widget-intro-area"
+    >
+      <div className="widget-paragraph-area">
         Click here to donate to charity with your checkout.
       </div>
-      <div
-        className="parallel-btn smaller-widget-button"
-        onClick={() => {
-          if (donateClick) donateClick();
-        }}
-      >
-        <div className="btn-text">Donate</div>
+      <div className="widget-button-area">
+        <div
+          className="parallel-btn"
+          onClick={() => {
+            if (donateClick) donateClick();
+          }}
+        >
+          <div className="btn-text">Donate</div>
+        </div>
       </div>
     </motion.div>
   );
 };
 
-export { WidgetIntro };
+export { LargeWidgetIntro };

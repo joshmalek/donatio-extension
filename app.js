@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import GlobalRoot from "./components/GlobalRoot";
 import SmallDonationWidget from "./components/SmallDonationWidget";
+import LargeDonationWidget from "./components/LargerWidget/LargeDonationWidget";
 import AmazonOrderTotalInhibitor from "./components/AmazonOrderTotalInhibitor";
 
 import "./src/css/style.scss";
@@ -65,6 +66,23 @@ window.addEventListener("load", function () {
       childList: true,
     });
   }
+
+  // (4) insert the larget donation widget where the left subtotal table is
+  let largeSubtotal = document.getElementById("bottomsubtotals");
+  // if (largeSubtotal == null)
+  const elementTarget = largeSubtotal.querySelector("div.a-box-inner");
+  if (elementTarget) {
+    largeWidgetApp(null, elementTarget);
+  } else {
+    const observer = new MutationObserver((mutationList, observer) => {
+      for (const mutation of mutationList) {
+        const target = watch.querySelector("div.a-box-inner");
+        if (target) {
+          largeWidgetApp(observer, target);
+        }
+      }
+    });
+  }
 }); // end addEventListener
 
 const app = (observer, target) => {
@@ -79,6 +97,22 @@ const app = (observer, target) => {
     ReactDOM.render(
       <SmallDonationWidget />,
       document.getElementById("donatio-donation-widget")
+    );
+  }
+};
+
+const largeWidgetApp = (observer, target) => {
+  if (observer) observer.disconnect();
+
+  if (!document.getElementById("donatio-donation-widget-larger")) {
+    const parent = target;
+    const root = document.createElement("div");
+    root.setAttribute("id", "donatio-donation-widget-larger");
+
+    parent.prepend(root);
+    ReactDOM.render(
+      <LargeDonationWidget />,
+      document.getElementById("donatio-donation-widget-larger")
     );
   }
 };
