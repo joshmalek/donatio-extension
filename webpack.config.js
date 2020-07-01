@@ -5,6 +5,7 @@ const config = {
   entry: {
     app: "./app.js",
     backgroundApp: "./backgroundApp.js",
+    orderCompleteApp: "./orderCompleteApp.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
