@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function () {
               pageUrl: {
                 urlContains: "donatio-site.herokuapp",
                 schemes: ["https", "http"],
-                // pathContains: "paymentStatus",
+                pathContains: "paymentStatus",
               },
             }),
           ],
