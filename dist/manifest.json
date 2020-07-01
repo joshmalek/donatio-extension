@@ -2,7 +2,12 @@
   "name": "DonatIO Extension",
   "version": "1.0",
   "description": "Donate to charities along with your checkout with this simple extension!",
-  "permissions": ["activeTab", "declarativeContent", "https://www.amazon.com/"],
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "https://www.amazon.com/",
+    "https://donatio-site.herokuapp.com/"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
