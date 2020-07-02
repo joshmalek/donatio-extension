@@ -14,9 +14,6 @@ export default class BackgroundAppContainer extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(`In BackgroundAppContainer Constructor`);
-    console.log(this.props.donation_info);
-
     this.lottiePendingContainer = React.createRef();
 
     this.state = {
@@ -75,7 +72,7 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   processTransaction() {
-    let process_query = `mutation { processDonation(user_id: "5ee2a62b9bd5ef93fc546c02", donation_amount: ${this.props.donation_info.transaction_amount.value}, currency_code: "${this.props.donation_info.transaction_amount.currencyCode}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
+    let process_query = `mutation { processDonation(reciept_id: "${this.props.donation_info.reciept_id}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
     console.log(`Query String: ${process_query}`);
 
     axios
@@ -106,9 +103,11 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   getCurrentUser() {
+    let user_id = this.props.donation_info.user_data.user_id;
+
     axios
       .post("http://localhost:4000/graphql", {
-        query: `{ user(_id: "5ee2a62b9bd5ef93fc546c02") { firstName, lastName, experience, medals { name, asset_key } } }`,
+        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, medals { name, asset_key } } }`,
       })
       .then((res) => {
         console.log(res);
