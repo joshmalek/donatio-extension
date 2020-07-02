@@ -702,3 +702,46 @@ input[type="range"]::-moz-range-thumb {
 .a-donatio-color-price {
   color: #49c58b !important;
 }
+
+.next-steps-viewer {
+  .step-row {
+    margin-bottom: 35px;
+    .image-area,
+    .text-area {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .image-area {
+      width: 200px;
+      height: 100px;
+      text-align: center;
+    }
+
+    .text-area {
+      width: 550px;
+    }
+
+    .step-complete {
+      border: 1px solid $__black;
+      border-radius: 3px;
+      height: 45px;
+      width: 800px;
+
+      .icon-area,
+      .text-area {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .icon-area {
+        margin-left: 24px;
+      }
+
+      .text-area {
+        line-height: 45px;
+        margin-left: 24px;
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ const RewardSlider = ({
   medals_unlocked,
   updateLevel,
   updateMedals,
+  sliderComplete,
 }) => {
   const contentContainer = useRef(null);
   const timerControl = useAnimation();
@@ -156,6 +157,9 @@ const RewardSlider = ({
       height: "0px",
       transition: { duration: 0.5 },
     });
+
+    // call callback to signal finished slider event
+    if (sliderComplete) sliderComplete();
   };
 
   useEffect(() => {
