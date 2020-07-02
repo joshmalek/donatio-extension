@@ -6,7 +6,7 @@ import CheckSVG from "../../src/icons/check.svg";
 
 import { useAnimation, motion } from "framer-motion";
 
-const NextStepsViewer = ({ show }) => {
+const NextStepsViewer = ({ show, email_confirmed }) => {
   const containerController = useAnimation();
 
   const showSteps = async () => {
@@ -41,38 +41,44 @@ const NextStepsViewer = ({ show }) => {
       >
         Next Steps
       </div>
-      <div className="step-row">
-        <div className="step-complete">
-          <div className="icon-area">
-            <img src={CheckSVG} height="24px" />
-          </div>
-          <div
-            className="text-area"
-            style={{ fontFamily: "Yan", fontSize: "24px", fontWeight: 600 }}
-          >
-            Email Confirmed
-          </div>
-        </div>
-      </div>
-      <div className="step-row">
-        <div className="image-area">
-          <img src={SecureSVG} height="80px" />
-        </div>
-        <div className="text-area">
-          <div style={{ fontFamily: "Yan", fontSize: "24px", fontWeight: 600 }}>
-            Confirm Your Email
-          </div>
-          <div style={{ fontFamily: "OpenSans", fontSize: "20px" }}>
-            Confirm your email to setup the password for your account.
+      {email_confirmed && (
+        <div className="step-row">
+          <div className="step-complete">
+            <div className="icon-area">
+              <img src={CheckSVG} height="24px" />
+            </div>
             <div
-              className="parallel-btn smaller-widget-button"
-              style={{ margin: "20px 0 0 0", color: "white" }}
+              className="text-area"
+              style={{ fontFamily: "Yan", fontSize: "24px", fontWeight: 600 }}
             >
-              <div className="btn-text">Send Email</div>
+              Email Confirmed
             </div>
           </div>
         </div>
-      </div>
+      )}
+      {!email_confirmed && (
+        <div className="step-row">
+          <div className="image-area">
+            <img src={SecureSVG} height="80px" />
+          </div>
+          <div className="text-area">
+            <div
+              style={{ fontFamily: "Yan", fontSize: "24px", fontWeight: 600 }}
+            >
+              Confirm Your Email
+            </div>
+            <div style={{ fontFamily: "OpenSans", fontSize: "20px" }}>
+              Confirm your email to setup the password for your account.
+              <div
+                className="parallel-btn smaller-widget-button"
+                style={{ margin: "20px 0 0 0", color: "white" }}
+              >
+                <div className="btn-text">Send Email</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="step-row">
         <div className="image-area">
           <img src={MobileAppSVG} height="80px" />

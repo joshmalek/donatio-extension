@@ -109,7 +109,7 @@ export default class BackgroundAppContainer extends React.Component {
 
     axios
       .post("http://localhost:4000/graphql", {
-        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, medals { name, asset_key } } }`,
+        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, email_confirmed, medals { name, asset_key } } }`,
       })
       .then((res) => {
         console.log(res);
@@ -196,7 +196,14 @@ export default class BackgroundAppContainer extends React.Component {
                 : this.state.donation_data.medals_unlocked
             }
           />
-          <NextStepViewer show={this.state.slider_complete} />
+          <NextStepViewer
+            show={this.state.slider_complete}
+            email_confirmed={
+              this.state.current_user
+                ? this.state.current_user.email_confirmed
+                : false
+            }
+          />
         </div>
       </div>
     );
