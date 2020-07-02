@@ -9,6 +9,7 @@ import Lottie_PaymentSuccess from "../../src/lottie-files/16271-payment-successf
 
 import { RewardSlider } from "./RewardSlider";
 import { RewardPreview } from "./RewardPreview";
+import NextStepViewer from "./NextStepsViewer";
 
 export default class BackgroundAppContainer extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class BackgroundAppContainer extends React.Component {
       donation_data: null,
       updated_level: null,
       updated_medals: null,
+      slider_complete: false,
     };
   }
 
@@ -107,7 +109,7 @@ export default class BackgroundAppContainer extends React.Component {
 
     axios
       .post("http://localhost:4000/graphql", {
-        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, medals { name, asset_key } } }`,
+        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, email_confirmed, medals { name, asset_key } } }`,
       })
       .then((res) => {
         console.log(res);
@@ -176,6 +178,10 @@ export default class BackgroundAppContainer extends React.Component {
                 console.log(new_medals);
                 this.updateMedals(new_medals);
               }}
+              sliderComplete={() => {
+                console.log("Slider complete");
+                this.setState({ slider_complete: true });
+              }}
             />
           )}
           <RewardPreview
@@ -188,6 +194,14 @@ export default class BackgroundAppContainer extends React.Component {
               this.state.donation_data == null
                 ? []
                 : this.state.donation_data.medals_unlocked
+            }
+          />
+          <NextStepViewer
+            show={this.state.slider_complete}
+            email_confirmed={
+              this.state.current_user
+                ? this.state.current_user.email_confirmed
+                : false
             }
           />
         </div>
