@@ -103,9 +103,11 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   getCurrentUser() {
+    let user_id = this.props.donation_info.user_data.user_id;
+
     axios
       .post("http://localhost:4000/graphql", {
-        query: `{ user(_id: "5ee2a62b9bd5ef93fc546c02") { firstName, lastName, experience, medals { name, asset_key } } }`,
+        query: `{ user(_id: "${user_id}") { firstName, lastName, experience, medals { name, asset_key } } }`,
       })
       .then((res) => {
         console.log(res);
