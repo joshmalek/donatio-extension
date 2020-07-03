@@ -6,7 +6,7 @@ import CheckSVG from "../../src/icons/check.svg";
 
 import { useAnimation, motion } from "framer-motion";
 
-const NextStepsViewer = ({ show, email_confirmed }) => {
+const NextStepsViewer = ({ show, email_confirmed, sendConfirmationEmail }) => {
   const containerController = useAnimation();
 
   const showSteps = async () => {
@@ -73,7 +73,14 @@ const NextStepsViewer = ({ show, email_confirmed }) => {
                 className="parallel-btn smaller-widget-button"
                 style={{ margin: "20px 0 0 0", color: "white" }}
               >
-                <div className="btn-text">Send Email</div>
+                <div
+                  className="btn-text"
+                  onClick={() => {
+                    if (sendConfirmationEmail) sendConfirmationEmail();
+                  }}
+                >
+                  Send Email
+                </div>
               </div>
             </div>
           </div>

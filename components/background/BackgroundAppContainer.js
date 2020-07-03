@@ -28,6 +28,8 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   componentDidMount() {
+    console.log("Donator Info Props");
+    console.log(this.props.donation_info);
     this.getCurrentUser();
     this.processTransaction();
     this.loadLottie();
@@ -74,7 +76,7 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   processTransaction() {
-    let process_query = `mutation { processDonation(receipt_id: "${this.props.donation_info.receipt_id}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
+    let process_query = `mutation { processDonation(reciept_id: "${this.props.donation_info.receipt_id}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
     console.log(`Query String: ${process_query}`);
 
     axios
@@ -119,6 +121,25 @@ export default class BackgroundAppContainer extends React.Component {
         console.log(`Error getting current user`);
         console.log(err);
       });
+  }
+
+  sendConfirmationEmail() {
+    let user_id = this.props.donation_info.user_data.user_id;
+    if (user_id) {
+      let query = `mutation { initiateEmailConfirmation(user_id: "${user_id}") }`;
+      axios
+        .post("http://localhost:4000/graphql", {
+          query: query,
+        })
+        .then((res) => {
+          console.log("Email Initiation Responded");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("Error initiating email confirmation");
+          console.log(err);
+        });
+    }
   }
 
   updateMedals(new_medals) {
@@ -203,6 +224,9 @@ export default class BackgroundAppContainer extends React.Component {
                 ? this.state.current_user.email_confirmed
                 : false
             }
+            sendConfirmationEmail={() => {
+              this.sendConfirmationEmail();
+            }}
           />
         </div>
       </div>
