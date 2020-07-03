@@ -121,6 +121,25 @@ export default class BackgroundAppContainer extends React.Component {
       });
   }
 
+  sendConfirmationEmail() {
+    let user_id = this.props.donation_info.user_data.user_id;
+    if (user_id) {
+      let query = `mutation { initiateEmailConfirmation(user_id: "${user_id}") }`;
+      axios
+        .post("http://localhost:4000/graphql", {
+          query: query,
+        })
+        .then((res) => {
+          console.log("Email Initiation Responded");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log("Error initiating email confirmation");
+          console.log(err);
+        });
+    }
+  }
+
   updateMedals(new_medals) {
     this.setState({ updated_medals: new_medals });
   }
@@ -203,6 +222,9 @@ export default class BackgroundAppContainer extends React.Component {
                 ? this.state.current_user.email_confirmed
                 : false
             }
+            sendConfirmationEmail={() => {
+              this.sendConfirmationEmail();
+            }}
           />
         </div>
       </div>
