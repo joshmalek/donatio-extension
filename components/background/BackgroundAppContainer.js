@@ -76,7 +76,7 @@ export default class BackgroundAppContainer extends React.Component {
   }
 
   processTransaction() {
-    let process_query = `mutation { processDonation(reciept_id: "${this.props.donation_info.receipt_id}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
+    let process_query = `mutation { processDonation(receipt_id: "${this.props.donation_info.receipt_id}") { previous_experience_value, experience_gained, total_donation, medals_unlocked { _id, name, description, asset_key}} }`;
     console.log(`Query String: ${process_query}`);
 
     axios
