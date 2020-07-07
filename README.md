@@ -25,5 +25,4 @@ This repo consists of the Chrome Extension of our product.
 
 [Twitter handle]: https://img.shields.io/twitter/follow/donatioapp?label=Follow&style=social
 [Twitter badge]: https://twitter.com/intent/follow?screen_name=donatioapp
-#### Instructions for Use
 
