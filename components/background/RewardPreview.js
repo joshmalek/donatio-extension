@@ -25,7 +25,7 @@ const RewardPreview = ({ experience_gained, medals_unlocked }) => {
 
   const initiateTwitterAuth = () => {
     axios
-      .post(`http://localhost:4000/graphql`, {
+      .post(`http://3.21.56.172:4000/graphql`, {
         query: `query { initiateTwitterAuth { oauth_token, oauth_token_secret } }`,
       })
       .then((res) => {
@@ -40,7 +40,7 @@ const RewardPreview = ({ experience_gained, medals_unlocked }) => {
 
         // monitorTwitterAuth
         axios
-          .post(`http://localhost:4000/graphql`, {
+          .post(`http://3.21.56.172:4000/graphql`, {
             query: `query { monitorTwitterAuth(oauth_token: "${auth_info.oauth_token}") { oauth_token, oauth_token_secret } }`,
           })
           .then((monitor_res) => {
@@ -123,7 +123,7 @@ const RewardPreview = ({ experience_gained, medals_unlocked }) => {
     console.log(`Twitter message: ${twitter_message}`);
 
     axios
-      .post("http://localhost:4000/graphql", {
+      .post("http://3.21.56.172:4000/graphql", {
         query: `query { sendTweet(access_token: "${tweetCreds.oauth_token}", access_token_secret: "${tweetCreds.oauth_token_scret}", tweet: "${twitter_message}") }`,
       })
       .then((res) => {

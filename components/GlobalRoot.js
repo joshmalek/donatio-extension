@@ -25,7 +25,7 @@ export default class GlobalRoot extends React.Component {
 
   getNPOofDay() {
     axios
-      .post("http://localhost:4000/graphql", {
+      .post("http://3.21.56.172:4000/graphql", {
         query: "{ NPOofDay { name, _id } }",
       })
       .then((res) => {
@@ -60,7 +60,7 @@ export default class GlobalRoot extends React.Component {
   attachComponent(component_) {
     let subcomponents = this.state.subcomponents.splice(0);
     subcomponents.push(component_);
-    this.setState({ subcomponents: subcomponents }, () => {});
+    this.setState({ subcomponents: subcomponents }, () => { });
   }
 
   setDonationRatio(ratio) {
