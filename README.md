@@ -10,7 +10,13 @@ Chrome extension for Donatio.  Overlays on top of the Amazon checkout page.
 An AWSRaiseUp project by [Abdul-Muiz Yusuff](https://github.com/sacrael) & [Josh Malek](https://github.com/joshmalek)
 
 ## Features
-*
+* Full Amazon Pay integration.  Use the payment options you already have, with all the security of the Amazon payment platform.
+* Built with HTML5 for fast, fluid animations and intuitive UI.
+* Injected widget on top of Amazon checkout page for easy donations.
+* Watch as the experience increases and medals are unlocked with fun animations.
+* Tweet out your accolades directly from our page! We support full Twitter integration.
+* Create a new account from your Amazon Pay credentials, all that you need is a password.
+* Support for email account verification.
 
 ## Documentation 
 This repo consists of the Chrome Extension of our product.  
