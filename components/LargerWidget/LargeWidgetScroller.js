@@ -59,7 +59,7 @@ const LargeWidgetScroller = ({
             </div>
             <div className="label-value-inp">
               <div className="label-text">
-                {window.donatio_global.getCharityName()}
+                <marquee>{window.donatio_global.getCharityName()}</marquee>
               </div>
             </div>
           </div>
