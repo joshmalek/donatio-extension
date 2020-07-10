@@ -92,7 +92,7 @@ const NextStepsViewer = ({ show, email_confirmed, sendConfirmationEmail }) => {
         </div>
         <div className="text-area">
           <div style={{ fontFamily: "Yan", fontSize: "24px", fontWeight: 600 }}>
-            Donload the Mobile App
+            Download the Mobile App
           </div>
           <div style={{ fontFamily: "OpenSans", fontSize: "20px" }}>
             Download the Donatio Mobile app to keep track of your donation
