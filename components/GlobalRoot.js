@@ -25,7 +25,7 @@ export default class GlobalRoot extends React.Component {
 
   getNPOofDay() {
     axios
-      .post("https://3.21.56.172/graphql", {
+      .post("https://3.130.4.139/graphql", {
         query: "{ NPOofDay { name, _id } }",
       })
       .then((res) => {

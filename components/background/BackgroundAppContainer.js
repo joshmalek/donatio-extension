@@ -80,7 +80,7 @@ export default class BackgroundAppContainer extends React.Component {
     console.log(`Query String: ${process_query}`);
 
     axios
-      .post("https://3.21.56.172/graphql", {
+      .post("https://3.130.4.139/graphql", {
         query: process_query,
       })
       .then((res) => {
@@ -110,7 +110,7 @@ export default class BackgroundAppContainer extends React.Component {
     let user_id = this.props.donation_info.user_data.user_id;
 
     axios
-      .post("https://3.21.56.172/graphql", {
+      .post("https://3.130.4.139/graphql", {
         query: `{ user(_id: "${user_id}") { firstName, lastName, experience, email_confirmed, medals { name, asset_key } } }`,
       })
       .then((res) => {
@@ -128,7 +128,7 @@ export default class BackgroundAppContainer extends React.Component {
     if (user_id) {
       let query = `mutation { initiateEmailConfirmation(user_id: "${user_id}") }`;
       axios
-        .post("https://3.21.56.172/graphql", {
+        .post("https://3.130.4.139/graphql", {
           query: query,
         })
         .then((res) => {
