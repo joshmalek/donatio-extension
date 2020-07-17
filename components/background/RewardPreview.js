@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Twitter from "twitter-lite";
 import axios from "axios";
 import { motion, useAnimation } from "framer-motion";
+import ExperienceGainSVG from "../../src/icons/medals/medal_experienceGain.svg"
 
 import { AssetVars } from "../../src/js/assetVars";
 import TwitterIcon from "../../src/icons/twitter.svg";
@@ -141,7 +142,7 @@ const RewardPreview = ({ experience_gained, medals_unlocked }) => {
   return (
     <div className="reward-preview-area">
       <RewardPill
-        reward_src={`https://svgur.com/i/M4w.svg`}
+        reward_src={ExperienceGainSVG}
         reward_text={`+${experience_gained.toFixed(0)} exp. gained.`}
       />
       {showMedals()}
