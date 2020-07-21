@@ -18,7 +18,7 @@ An AWSRaiseUp project by [Abdul-Muiz Yusuff](https://github.com/sacrael) & [Josh
 * Injected widget on top of Amazon checkout page for easy donations.
 * Watch as the experience increases and medals are unlocked with fun animations.
 * Tweet out your accolades directly from our page! We support full Twitter integration.
-* Create a new account from your Amazon Pay credentials, all that you need is a password.
+* Create a new account from your Amazon Pay credentials, all you need is a password.
 * Support for email account verification.
 
 ## Installation
